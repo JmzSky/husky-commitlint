@@ -1,8 +1,9 @@
-代码提交校验，单独抽离开来，vue 和 react 都适用
+代码提交校验，单独抽离开来，vue 和 react 都适用<br />![image.png](https://cdn.nlark.com/yuque/0/2023/png/25948573/1703510584686-c9479933-6acf-4749-8414-e26a92775b6b.png#averageHue=%230e0e0e&clientId=u13d3f1a4-902a-4&from=paste&height=242&id=NCRzE&originHeight=242&originWidth=517&originalType=binary&ratio=1&rotation=0&showTitle=false&size=16205&status=done&style=none&taskId=u76d11cac-a865-4191-9317-d57c0177105&title=&width=517)<br />![image.png](https://cdn.nlark.com/yuque/0/2023/png/25948573/1703511280048-0fc2658f-04ae-4577-89e9-35b21b99f2b8.png#averageHue=%2314100f&clientId=u13d3f1a4-902a-4&from=paste&height=342&id=UPa8s&originHeight=342&originWidth=576&originalType=binary&ratio=1&rotation=0&showTitle=false&size=64119&status=done&style=none&taskId=u9959e7b9-560c-4da0-81d8-08bf3f14ba7&title=&width=576)
+<a name="fPVP1"></a>
+# 配置 typeScript
 
-
-配置 typeScript
 1. 修改 tsconfig.node.json 文件
+```javascript
 {
   "compilerOptions": {
     "target": "ESNext", // 将代码编译为最新版本的 JS
@@ -28,8 +29,10 @@
   "references": [{ "path": "./tsconfig.node.json" }] //为文件进行不同配置
 }
 
+```
 
 2. 在 src 文件夹下新建 typings.d.ts 文件
+```javascript
 //声明window上自定义属性，如事件总线
 declare interface Window {
   eventBus: any;
@@ -42,15 +45,19 @@ declare module "*.vue" {
   export default component;
 }
 
+```
 
 3. 配置路径别名
- pnpm install @types/node -D
+
+ pnpm install @types/node -D<br />![image.png](https://cdn.nlark.com/yuque/0/2023/png/25948573/1703425111868-af41c8af-4f08-4bc3-9863-6e33062d7d5a.png#averageHue=%23292a23&clientId=ud0cfd5b2-13c7-4&from=paste&height=325&id=uac5a8575&originHeight=325&originWidth=595&originalType=binary&ratio=1&rotation=0&showTitle=false&size=48825&status=done&style=none&taskId=u818d72a4-2bc6-4e46-b475-eed1055fd68&title=&width=595)
 
 
 
+<a name="GERor"></a>
+# 配置 eslint
 
-配置 eslint
 1. 安装 eslint
+```javascript
 // eslint 安装
 pnpm install eslint  -D 
 // eslint vue插件安装
@@ -62,8 +69,10 @@ pnpm install @typescript-eslint/eslint-plugin -D
 
 // 批量安装
 pnpm install eslint eslint-plugin-vue @typescript-eslint/parser @typescript-eslint/eslint-plugin  -D
+```
 
 2. 新建 .eslintrc 文件
+```javascript
 {
   "env": {
     "browser": true,
@@ -109,13 +118,17 @@ pnpm install eslint eslint-plugin-vue @typescript-eslint/parser @typescript-esli
   }
 }
 
+```
 
 3. 添加 eslint 忽略文件和目录配置 .eslintignore
+```javascript
 # eslint 忽略检查 (根据项目需要自行添加)
 node_modules
 dist
+```
 
 4. 在 package.json 中增加 eslint 格式化命令
+```javascript
 {
   "name": "vite-work",
   "private": true,
@@ -142,9 +155,13 @@ dist
     "vue-tsc": "^1.8.25"
   }
 }
+```
 
-配置 prettier
+<a name="c6uH8"></a>
+# 配置 prettier
+
 1. 安装 prettier 依赖
+```javascript
 // 安装 prettier 依赖
 pnpm install prettier  -D  
 //解决ESlint中的样式规范和prettier中样式规范的冲突，以prettier的样式规范为准，使用ESlint中的样式规范自动失效
@@ -155,8 +172,10 @@ pnpm install vue-eslint-parser -D
 
 // 批量安装
 pnpm install prettier eslint-config-prettier eslint-plugin-prettier vue-eslint-parser -D
+```
 
 2. 新建配置 .prettierrc.json 文件
+```javascript
 {  
   	"printWidth": 150, // 单行输出（不折行）的（最大）长度 
     "useTabs": false, // 不使用缩进符，而使用空格 
@@ -175,8 +194,10 @@ pnpm install prettier eslint-config-prettier eslint-plugin-prettier vue-eslint-p
     "htmlWhitespaceSensitivity": "ignore", // 指定 HTML 文件的全局空白区域敏感度, "ignore" - 空格被认为是不敏感的
     "jsxSingleQuote": false, // jsx 不使用单引号，而使用双引号  "rangeStart": 0, // 每个文件格式化的范围是文件的全部内容
 }
+```
 
 3. 在 package.json 中增加 prettier 格式化命令
+```javascript
 {
   "name": "vite-work",
   "private": true,
@@ -208,19 +229,27 @@ pnpm install prettier eslint-config-prettier eslint-plugin-prettier vue-eslint-p
     "vue-tsc": "^1.8.25"
   }
 }
+```
 
 4. 添加 prettier 忽略文件和目录配置 .prettierignore
+```javascript
 # 忽略格式化文件 (根据项目需要自行添加)
 node_modules
 dist
+```
 
 如见代码标红报错执行：
-● pnpm lint
-● pnpm prettier
+
+- pnpm lint
+- pnpm prettier
+
 vscode 使用插件 volar 校验代码
 
-配置 stylelint
+<a name="f9QkZ"></a>
+# 配置 stylelint
+
 1. 安装依赖
+```javascript
 // 安装 stylelint 核心库
 pnpm install stylelint -D
 
@@ -253,8 +282,10 @@ pnpm i sass -D
 
 // 批量安装
 pnpm install scss stylelint stylelint-config-standard stylelint-config-recommended-scss stylelint-config-recommended-vue postcss postcss-html postcss-scss stylelint-config-recess-order stylelint-config-html -D
+```
 
 2. 根目录新建 .stylelintrc.cjs 文件，配置如下：
+```javascript
 module.exports = {
   // 继承推荐规范配置
   extends: [
@@ -298,8 +329,10 @@ module.exports = {
     ],
   },
 };
+```
 
 3. 配置 vite.config.ts
+```javascript
 css: {
   // CSS 预处理器
   preprocessorOptions: {
@@ -310,20 +343,25 @@ css: {
     }
   }
 }
+```
 
-配置 husky 
-● husky：一个为 git 客户端增加 hook 的工具
-● commitlint：让commit信息规范化，检查提交描述是否符合规范要求
-● lint-staged：自动修复格式错误，仅对 git 代码暂存区文件进行处理，配合 husky 使用
-● pre-commit：git hooks的钩子，在代码提交前检查代码是否符合规范，不符合规范将不可被提交
-● commit-msg：git hooks的钩子，在代码提交前检查commit信息是否符合规范
+<a name="oKAO1"></a>
+# 配置 husky 
 
-提交校验工作流程分析：
+- husky：一个为 git 客户端增加 hook 的工具
+- commitlint：让commit信息规范化，检查提交描述是否符合规范要求
+- lint-staged：自动修复格式错误，仅对 git 代码暂存区文件进行处理，配合 husky 使用
+- pre-commit：git hooks的钩子，在代码提交前检查代码是否符合规范，不符合规范将不可被提交
+- commit-msg：git hooks的钩子，在代码提交前检查commit信息是否符合规范
+
+**提交校验工作流程分析：**
+
 1. 利用 commitizen 提供的 git cz 指令代替 git commit 指令，调出由 cz-customizable 提供的自定义界面供开发者按照规范选择对应的操作，并且输入一些描述
 2. 再使用 @commitlint/cli 与 @commitlint/config-conventional 对提交的描述进行检查，如果失败则停止提交
 3. 完成 git cz 之后，利用 husky 的钩子调用 lint-staged 配合 eslint 进行代码的检查和修复，最后 git push完成整个 git 操作
 
 1. 安装依赖
+```javascript
 // 安装 husky 依赖
 pnpm install husky -D
 // 安装 commitlint 对提交的描述进行检查
@@ -333,8 +371,10 @@ pnpm install lint-staged -D
 
 // 批量安装
 pnpm install husky @commitlint/config-conventional @commitlint/cli lint-staged -D
+```
 
 2. 在控制台输入命令，生成 .husky 文件夹
+```javascript
 // 创建git仓库
 git init
 
@@ -347,8 +387,10 @@ npx husky add .husky/pre-commit "npx --no-install lint-staged"
 // 添加 commit-msg
 npx husky add .husky/commit-msg 'npx --no-install commitlint -e'
 
+```
 
 3. commit-msg 规范化提交信息，修改 pre-commit 文件校验代码
+```javascript
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
@@ -356,8 +398,10 @@ echo "ts 类型检查中..."
 npx tsc  
 echo "ts 类型检查完成"
 npx --no-install lint-staged --quiet
+```
 
 4. 修改 package.json
+```javascript
 "lint-staged": {
   "*.{js,ts}": [
     "eslint --fix",
@@ -379,26 +423,35 @@ npx --no-install lint-staged --quiet
     "prettier --write"
   ]
 }
+```
 
 
-配置 commitizen 
-● commitizen：基于Node.js的 git commit 命令行工具，辅助生成标准化规范化的 commit message
-● cz-git：一款工程性更强，轻量级，高度自定义，标准输出格式的 commitizen 适配器
+<a name="WSYqX"></a>
+# 配置 commitizen 
+
+- commitizen：基于Node.js的 git commit 命令行工具，辅助生成标准化规范化的 commit message
+- cz-git：一款工程性更强，轻量级，高度自定义，标准输出格式的 commitizen 适配器
 
 1. 安装依赖
+```javascript
 // 网上很多文章都需要安装多余的插件，其实 husky 8+ 只需要配合 commitizen 就可以实现
 // 安装自定义 commitizen cz-git 的交互界面信息
 pnpm install commitizen cz-git -D 
+```
 
 2. 配置 package.json
+```javascript
 "config": {
   "commitizen": {
     "path": "node_modules/cz-git"
   }
 }
+```
 
 3. 在根目录创建 commitlint.config.cjs
-commitlint 对应配置Api：https://cz-git.qbb.sh/zh/config/
+
+**commitlint 对应配置Api：**[cz-git - commitizen adapter and CLI](https://cz-git.qbb.sh/zh/config/)
+```javascript
 module.exports = {
   // 继承的规则
   extends: ['@commitlint/config-conventional'],
@@ -490,5 +543,7 @@ module.exports = {
     defaultSubject: ''
   }
 }
+```
+
 
 
